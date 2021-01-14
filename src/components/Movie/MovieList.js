@@ -3,18 +3,21 @@ import PropTypes from 'prop-types';
 
 import MovieCard from './MovieCard';
 
-const getMovies = movies => (
-  <div className="card-deck">
-    {movies.map(movie => (
-      <MovieCard key={movie.id} movie={movie} />
-    ))}
-  </div>
-);
-
-const MovieList = ({ movies }) => <div>{getMovies(movies)}</div>;
+const getMovies = (movies,handleDelete) => 
+{
+  console.log(handleDelete);
+  return (
+    <div className="card-deck">
+      {movies.map(movie => (
+        <MovieCard key={movie.id} movie={movie} handleDelete={handleDelete}/>
+      ))}
+    </div>);
+}
+const MovieList = ({ movies,handleDelete }) => <div>{getMovies(movies,handleDelete)}</div>;
 
 MovieList.defaultProps = {
   movies: [],
+  
 };
 
 MovieList.propTypes = {
